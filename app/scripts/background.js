@@ -1,4 +1,9 @@
 'use strict';
+$(document).ready(function() {
+    $.getScript("https://sdk.spritzinc.com/js/1.0/js/spritz.min.js", function () {
+        console.log("StartSpritzing got SDK file");
+    })
+});
 
 chrome.runtime.onInstalled.addListener(function (details) { //Listener for new installs and updates
     if (details.reason == "install") //This branch handles new installs
@@ -33,21 +38,16 @@ chrome.commands.onCommand.addListener(function(command){
 });
 
 function startSpritzing(text) {
-    alert("StartSpritzing opening");
-	$.getScript("https://sdk.spritzinc.com/js/1.0/js/spritz.min.js", function(){
-        alert("StartSpritzing got SDK file");
-    	var locale = "en_us";
-	    var successHandler = function(text){
-	        //spritzController.setSpritzText(text);
-	        alert("Spritz fetched the text!");
-	    };
-		var failureHandler = function(text){
-			alert("Spritz failed to fetch the text...")
-		};
-	    SpritzClient.spritzify(text, locale, ssuc, ssuc);
+    var locale = "en_us";
+    var successHandler = function(text){
+        //spritzController.setSpritzText(text);
+        alert("Spritz fetched the text!");
+    };
+    var failureHandler = function(text){
+        alert("Spritz failed to fetch the text...")
+    };
+    SpritzClient.spritzify(text, locale, ssuc, ssuc);
 
-        return;
-	});
 }
 
 function ssuc(text)
