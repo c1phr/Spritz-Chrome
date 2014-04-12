@@ -2,11 +2,16 @@
  * Created by ryanbatchelder on 4/12/14.
  */
 
+var customOptions = {
+    "redicleWidth" : 434,
+    "redicleHeight" : 76
+};
+
 function init(){
 	//initialize the controller from the API
 	spritzController = new SPRITZ.spritzinc.SpritzerController(customOptions);
 	//attach the controller div
-	spritzController.attach($"#spritzer");
+	spritzController.attach.$("#spritzer");
 }
 
 function startSpritzing(text) {
@@ -22,6 +27,8 @@ function onSpritzifySuccess(){
 function onSpritzifyFailure(){
 	console.log("Spritz failed... Sorry about that.");
 }
+
+
 
 
 $(document).ready(function() {
