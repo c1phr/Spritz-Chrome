@@ -2,38 +2,33 @@
  * Created by ryanbatchelder on 4/12/14.
  */
 
-var customOptions = {
-    "redicleWidth" : 434,
-    "redicleHeight" : 76
-};
-
-function init(){
-	//initialize the controller from the API
-	spritzController = new SPRITZ.spritzinc.SpritzerController(customOptions);
-	//attach the controller div
-	spritzController.attach.$("#spritzer");
-}
-
-function startSpritzing(text) {
-	var locale = "en_us";
-	spritzClient.spritzify(text, locale, onSpritzifySuccess, onSpritzifyFailure);
+(function($){
 	
-}
+	function startSpritzing(text) {
+		//initialize the controller from the API
+		var spritzController = $("#spritzer").data("controller");
+	
+		var locale = "en_us";
+		var successHandler = function onSpritzifySuccess(text){
+			//alert("spritzify success!" + text);
+			spritzController.setSpritzText(text);
+			console.log("Spritz fetched the text!");
+		};
+		SpritzClient.spritzify(text, locale, successHandler, onSpritzifyFailure);
+	
+	}
 
-function onSpritzifySuccess(){
-	console.log("Spritz fetched the text!");
-}
-
-function onSpritzifyFailure(){
-	console.log("Spritz failed... Sorry about that.");
-}
+	function onSpritzifyFailure(e){
+	
+		console.log("Spritz failed... Sorry about that.", e);
+	}
 
 
 $(document).ready(function() {
-	init();
-	
-	//feed the text to spritzify
-	var spritzText = "You've successfully installed Spritz for Chrome!";
-	startSpritzing(spritzText);
-	
-})
+	setTimeout(function(){
+		var spritzText = "You've successfully installed Spritz for Chrome!";
+		startSpritzing(spritzText);
+	},1);	
+});
+
+}(jQuery));
