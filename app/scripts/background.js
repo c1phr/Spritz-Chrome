@@ -18,10 +18,6 @@ chrome.browserAction.onClicked.addListener(function(tab) {
     chrome.tabs.create({url: '../firstRun.html'}, null);
 });
 
-chrome.browserAction.setBadgeText({text: '\'spritz'});
-
-console.log('\'Allo \'Allo! Event Page for Browser Action');
-
 chrome.commands.onCommand.addListener(function(command){
 	alert("Command: " + command.name);
 });
