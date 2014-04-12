@@ -22,7 +22,7 @@ chrome.commands.onCommand.addListener(function(command){
 	if (command == "spritzify_selection"){
 		console.log(window.getSelection().toString());
 	}
-	alert("Command: " + command.name);
+	console.log("Command: " + command.name);
     chrome.tabs.executeScript({
         code: ''},
         function()
@@ -31,11 +31,6 @@ chrome.commands.onCommand.addListener(function(command){
         }
     )
 });
-
-function grabSelection(){
-	var theText = window.getSelection().toString();
-	
-}
 
 function startSpritzing(text) {
 	$.getScript("https://sdk.spritzinc.com/js/1.0/js/spritz.min.js", function(){
@@ -58,11 +53,12 @@ function getSelectionText() {
     } else if (document.selection && document.selection.type != "Control") {
         text = document.selection.createRange().text;
     }
-    return text;
+    startSpritzing(text);
 }
 
 function displayRedicle() {
-    alert("Redicle Display Called");
+    console.log("Redicle Display Called");
+    getSelectionText();
     $("html").prepend("<div class='backdrop overlay'>");
     $("html").append("</div><div class='reader-wrapper'><div data-role='spritzer' id='spritzer'></div></div>");
 }
