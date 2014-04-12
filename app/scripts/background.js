@@ -1,7 +1,13 @@
 'use strict';
 $(document).ready(function() {
+    var myuri = chrome.extension.getURL("/login_success.html")
+    var SpritzSettings = {
+        clientId: "4739145546ba944ad",
+        redirectUri: myuri
+    };
     $.getScript("https://sdk.spritzinc.com/js/1.0/js/spritz.min.js", function () {
-        console.log("StartSpritzing got SDK file");
+        alert("DocumentReady got SDK file");
+        window.SpritzClient = new SPRITZ.client.SpritzClient(SpritzSettings.clientId, 'https://api.spritzinc.com/api-server/v1/', myuri);
     })
 });
 
@@ -46,13 +52,8 @@ function startSpritzing(text) {
     var failureHandler = function(text){
         alert("Spritz failed to fetch the text...")
     };
-    SpritzClient.spritzify(text, locale, ssuc, ssuc);
+    SpritzClient.spritzify(text, locale, successHandler, failureHandler);
 
-}
-
-function ssuc(text)
-{
-    alert("YAY");
 }
 
 function getSelectionText() {
