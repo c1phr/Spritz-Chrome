@@ -19,21 +19,23 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 });
 
 chrome.commands.onCommand.addListener(function(command){
-	if (command == "spritzify_selection"){
-		console.log(window.getSelection().toString());
-	}
-	console.log("Command: " + command.name);
-    chrome.tabs.executeScript({
-        code: ''},
-        function()
-        {
-            displayRedicle();
-        }
-    )
+	if (command == "spritzify_selection") {
+        console.log(window.getSelection().toString());
+
+        console.log("Command: " + command.name);
+        chrome.tabs.executeScript({
+                code: ''},
+            function () {
+                displayRedicle();
+            }
+        )
+    }
 });
 
 function startSpritzing(text) {
+    alert("StartSpritzing opening");
 	$.getScript("https://sdk.spritzinc.com/js/1.0/js/spritz.min.js", function(){
+        alert("StartSpritzing got SDK file");
     	var locale = "en_us";
 	    var successHandler = function onSpritzifySuccess(text){
 	        //spritzController.setSpritzText(text);
@@ -41,8 +43,11 @@ function startSpritzing(text) {
 	    };
 		var failureHandler = function onSpritzifyFail(text){
 			console.log("Spritz failed to fetch the text...")
-		}
+		};
+        alert("About to spritizify");
 	    SpritzClient.spritzify(text, locale, successHandler, failureHandler);
+
+        return;
 	});
 }
 
@@ -57,7 +62,7 @@ function getSelectionText() {
 }
 
 function displayRedicle() {
-    console.log("Redicle Display Called");
+    alert("Redicle Display Called");
     getSelectionText();
     $("html").prepend("<div class='backdrop overlay'>");
     $("html").append("</div><div class='reader-wrapper'><div data-role='spritzer' id='spritzer'></div></div>");
