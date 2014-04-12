@@ -7,4 +7,4 @@ Built by:
 * [Ryan Batchelder](https://github.com/c1phr)
 * [Dylan Grayson](https://github.com/smashfligaeta)
 * [Brandon Paree](https://github.com/brandonparee)
-* [Conner Swann](https://github.com/yourbuddyconner)
+* [Conner Swann](http://connerswann.me)
