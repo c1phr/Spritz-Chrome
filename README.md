@@ -1,7 +1,7 @@
 Spritz-Chrome
 =============
 
-Chrome extension for [Spritz](http://www.spritzinc.com/) created at [LA Hacks](http://www.lahacks.com/). Created by a team from Northern Arizona University.
+Chrome extension for [Spritz](http://www.spritzinc.com/) created at [LA Hacks](http://www.lahacks.com/).
 
 Built by:
 * [Ryan Batchelder](https://github.com/c1phr)
