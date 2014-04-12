@@ -6,7 +6,7 @@ var hash = window.location.hash;
 var origin = window.location.protocol + "//" + window.location.host;
 
 // postMessage does not work reliably in IE, pass the value through localStorage
-
+// alert("Login Success is working.")
 if (typeof(localStorage) !== 'undefined') {
     try {
     localStorage.setItem("spritz.authResponse", hash);
