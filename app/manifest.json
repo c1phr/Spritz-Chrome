@@ -1,6 +1,7 @@
 {
     "name": "Spritz Chrome",
     "version": "0.0.1",
+    "permissions": ["https://sdk.spritzinc.com/*"],
     "manifest_version": 2,
     "description": "Chrome extension for Spritz reading service.",
     "icons": {
@@ -8,8 +9,14 @@
         "128": "images/icon-128.png"
     },
     "default_locale": "en",
+    "content_security_policy": "script-src 'self' https://sdk.spritzinc.com/; object-src 'self'",
+    "content_scripts" : [{
+        "matches" : ["http://*/*"],
+        "js" : ["scripts/jquery-1.11.0.min.js"]
+    }],
     "background": {
         "scripts": [
+            "scripts/jquery-1.11.0.min.js",
             "scripts/chromereload.js",
             "scripts/background.js"
         ]

@@ -1,15 +1,18 @@
 'use strict';
 
 chrome.runtime.onInstalled.addListener(function (details) {
+    if (details.reason == "install")
+    {
+        window.location = "chrome-extension://@@extension_id/firstRun.html"
+    }
     console.log('previousVersion', details.previousVersion);
 });
 
+
 chrome.browserAction.onClicked.addListener(function(tab) {
-    console.log("Extension button clicked");
-    chrome.tabs.executeScript({
-        code: 'spritzify()'
-    })
-})
+    //alert("Extension button clicked");
+    chrome.tabs.create({url: '../firstRun.html'}, null);
+});
 
 chrome.browserAction.setBadgeText({text: '\'Allo'});
 
