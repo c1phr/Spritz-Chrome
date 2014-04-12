@@ -19,11 +19,9 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 });
 
 chrome.commands.onCommand.addListener(function(command){
-<<<<<<< HEAD
 	if (command == "spritzify_selection"){
 		console.log(window.getSelection().toString());
 	}
-=======
 	alert("Command: " + command.name);
     chrome.tabs.executeScript({
         code: ''},
@@ -32,7 +30,6 @@ chrome.commands.onCommand.addListener(function(command){
             displayRedicle();
         }
     )
->>>>>>> f11f6f92f4c28344a7fde72ef9db9d55a07b1445
 });
 
 function grabSelection(){
