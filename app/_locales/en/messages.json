@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Spritz Chrome",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "Chrome extension for Chrome",
+    "description": "The description of the application"
+  }
+}
