@@ -19,8 +19,7 @@
       "19": "images/icon-19.png",
       "38": "images/icon-38.png"
     },
-    "default_title": "Spritz Chrome",
-    "default_popup": "popup.html"
+    "default_title": "Spritz Chrome"
   },
   "options_page": "options.html"
 }
