@@ -29,3 +29,13 @@ $(document).ready(function() {
 		startSpritzing(spritzText);
 	},1);
 });
+
+//Stuff for progress bar
+function showProgress(completed) {
+		$("#completedText").val(Math.round(completed));
+}
+
+//init
+var container = $("#spritzer");
+
+container.on("onProgressChange", function(event, completed) {showProgress(completed);});
