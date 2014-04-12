@@ -15,6 +15,20 @@ chrome.browserAction.onClicked.addListener(function(tab) {
     chrome.tabs.create({url: '../firstRun.html'}, null);
 });
 
-chrome.browserAction.setBadgeText({text: '\'Allo'});
+chrome.browserAction.setBadgeText({text: '\'spritz'});
 
 console.log('\'Allo \'Allo! Event Page for Browser Action');
+
+chrome.commands.onCommand.addListener(function(command){
+	alert("Command: " + command.name);
+});
+
+function getSelectionText() {
+    var text = "";
+    if (window.getSelection) {
+        text = window.getSelection().toString();
+    } else if (document.selection && document.selection.type != "Control") {
+        text = document.selection.createRange().text;
+    }
+    return text;
+}
