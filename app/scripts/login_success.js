@@ -13,7 +13,7 @@ if (typeof(localStorage) !== 'undefined') {
     }
     catch(e) {
     if(console) {
-    alert(e, 'Can\'t write to localStorage');
+    console.log(e, 'Can\'t write to localStorage');
     }
     }
     }

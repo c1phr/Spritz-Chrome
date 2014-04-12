@@ -16,7 +16,7 @@ function init(){
 
 function startSpritzing(text) {
 	var locale = "en_us";
-	spritzClient.spritzify(text, locale, onSpritzifySuccess, onSpritzifyFailure)
+	spritzClient.spritzify(text, locale, onSpritzifySuccess, onSpritzifyFailure);
 	
 }
 

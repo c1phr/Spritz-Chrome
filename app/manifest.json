@@ -28,5 +28,6 @@
     },
     "default_title": "Spritz Chrome"
   },
-  "options_page": "options.html"
+  "options_page": "options.html",
+  "web_accessible_resources" : ["scripts/login_success.js"]
 }
