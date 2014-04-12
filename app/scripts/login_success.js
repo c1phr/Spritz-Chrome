@@ -16,3 +16,5 @@ if (typeof(localStorage) !== 'undefined') {
 if (window.opener) {
     window.opener.postMessage(hash, origin);
 }
+
+window.close();
