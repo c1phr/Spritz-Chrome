@@ -3,7 +3,8 @@
 chrome.runtime.onInstalled.addListener(function (details) {
     if (details.reason == "install")
     {
-        window.location = "chrome-extension://@@extension_id/firstRun.html"
+        var myid = chrome.i18n.getMessage("@@extension_id");
+        window.location = "chrome-extension://" + myid + "/firstRun.html"
     }
     console.log('previousVersion', details.previousVersion);
 });

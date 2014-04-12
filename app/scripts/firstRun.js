@@ -29,8 +29,6 @@ function onSpritzifyFailure(){
 }
 
 
-
-
 $(document).ready(function() {
 	init();
 	
