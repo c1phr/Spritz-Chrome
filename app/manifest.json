@@ -1,7 +1,7 @@
 {
     "name": "Spritz Chrome",
     "version": "0.0.1",
-    "permissions": ["https://sdk.spritzinc.com/*", "storage", "tabs"],
+    "permissions": ["https://sdk.spritzinc.com/*", "storage", "tabs", "http://*/", "https://*/", "activeTab"],
     "manifest_version": 2,
     "description": "Chrome extension for Spritz reading service.",
     "icons": {

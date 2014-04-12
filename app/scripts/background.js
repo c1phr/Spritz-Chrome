@@ -20,6 +20,13 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 
 chrome.commands.onCommand.addListener(function(command){
 	alert("Command: " + command.name);
+    chrome.tabs.executeScript({
+        code: 'displayRedicle()'},
+        function()
+        {
+            displayRedicle();
+        }
+    )
 });
 
 function getSelectionText() {
@@ -30,4 +37,10 @@ function getSelectionText() {
         text = document.selection.createRange().text;
     }
     return text;
+}
+
+function displayRedicle() {
+    alert("Redicle Display Called");
+    $("html").prepend("<div class='backdrop overlay'>");
+    $("html").append("</div><div class='reader-wrapper'><div data-role='spritzer' id='spritzer'></div></div>");
 }
