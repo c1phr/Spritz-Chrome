@@ -21,7 +21,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 chrome.commands.onCommand.addListener(function(command){
 	alert("Command: " + command.name);
     chrome.tabs.executeScript({
-        code: 'displayRedicle()'},
+        code: ''},
         function()
         {
             displayRedicle();
