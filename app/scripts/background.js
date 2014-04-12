@@ -23,8 +23,29 @@ chrome.browserAction.setBadgeText({text: '\'spritz'});
 console.log('\'Allo \'Allo! Event Page for Browser Action');
 
 chrome.commands.onCommand.addListener(function(command){
-	alert("Command: " + command.name);
+	if (command == "spritzify_selection"){
+		console.log(window.getSelection().toString());
+	}
 });
+
+function grabSelection(){
+	var theText = window.getSelection().toString();
+	
+}
+
+function startSpritzing(text) {
+	$.getScript("https://sdk.spritzinc.com/js/1.0/js/spritz.min.js", function(){
+    	var locale = "en_us";
+	    var successHandler = function onSpritzifySuccess(text){
+	        //spritzController.setSpritzText(text);
+	        console.log("Spritz fetched the text!");
+	    };
+		var failureHandler = function onSpritzifyFail(text){
+			console.log("Spritz failed to fetch the text...")
+		}
+	    SpritzClient.spritzify(text, locale, successHandler, failureHandler);
+	});
+}
 
 function getSelectionText() {
     var text = "";

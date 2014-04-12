@@ -7,7 +7,6 @@
 function startSpritzing(text) {
     //initialize the controller from the API
     var spritzController = $("#spritzer").data("controller");
-
     var locale = "en_us";
     var successHandler = function onSpritzifySuccess(text){
         //alert("spritzify success!" + text);
