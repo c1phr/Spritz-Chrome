@@ -37,18 +37,22 @@ function startSpritzing(text) {
 	$.getScript("https://sdk.spritzinc.com/js/1.0/js/spritz.min.js", function(){
         alert("StartSpritzing got SDK file");
     	var locale = "en_us";
-	    var successHandler = function onSpritzifySuccess(text){
+	    var successHandler = function(text){
 	        //spritzController.setSpritzText(text);
-	        console.log("Spritz fetched the text!");
+	        alert("Spritz fetched the text!");
 	    };
-		var failureHandler = function onSpritzifyFail(text){
-			console.log("Spritz failed to fetch the text...")
+		var failureHandler = function(text){
+			alert("Spritz failed to fetch the text...")
 		};
-        alert("About to spritizify");
-	    SpritzClient.spritzify(text, locale, successHandler, failureHandler);
+	    SpritzClient.spritzify(text, locale, ssuc, ssuc);
 
         return;
 	});
+}
+
+function ssuc(text)
+{
+    alert("YAY");
 }
 
 function getSelectionText() {
