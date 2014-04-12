@@ -1,12 +1,15 @@
 'use strict';
 
-chrome.runtime.onInstalled.addListener(function (details) {
-    if (details.reason == "install")
+chrome.runtime.onInstalled.addListener(function (details) { //Listener for new installs and updates
+    if (details.reason == "install") //This branch handles new installs
     {
-        var myid = chrome.i18n.getMessage("@@extension_id");
-        window.location = "chrome-extension://" + myid + "/firstRun.html"
+        chrome.tabs.create({url: chrome.extension.getURL("/firstRun.html")}); //Open a new tab to the firstRun page
     }
-    console.log('previousVersion', details.previousVersion);
+    else
+    {
+        //Log the previous version of the extension that was installed, until we have something better to do with updates.
+        console.log('previousVersion', details.previousVersion);
+    }
 });
 
 
