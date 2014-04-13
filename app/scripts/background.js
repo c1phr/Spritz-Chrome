@@ -62,9 +62,9 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 });
 
 chrome.commands.onCommand.addListener(function(command){
-    chrome.tabs.executeScript(null, { code: "$('body').prepend('batchelder');"});
     //chrome.tabs.executeScript(null, { code: "$('body').prepend('<div class='backdrop overlay'>');"});
-    //chrome.tabs.executeScript(null, { code: "$('body').append('</div><div class='reader-wrapper'><div data-role='spritzer' id='spritzer'></div></div>');"});
+    chrome.tabs.executeScript(null, { code: "$('body').prepend('<div class=\"backdrop overlay\">');"});
+    chrome.tabs.executeScript(null, { code: "$('body').append('</div><div class=\"reader-wrapper\"><div data-role=\"spritzer\" id=\"spritzer\"></div></div>');"});
 
 	if (command == "spritzify_selection") {
         console.log(window.getSelection().toString());
