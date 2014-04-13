@@ -1,7 +1,9 @@
 {
     "name": "Spritz Chrome",
     "version": "0.0.1",
-    "permissions": ["https://sdk.spritzinc.com/*", "storage", "tabs", "http://*/", "https://*/", "activeTab"],
+    "permissions": [
+        "https://sdk.spritzinc.com/*", "storage", "tabs", "*://*/*", "activeTab", "contextMenus"
+    ],
     "manifest_version": 2,
     "description": "Chrome extension for Spritz reading service.",
     "icons": {
@@ -11,15 +13,17 @@
     "default_locale": "en",
     "content_security_policy": "script-src 'self' https://sdk.spritzinc.com/; object-src 'self'",
     "content_scripts" : [{
-        "matches" : ["http://*/*"],
+        "matches" : ["*://*/*"],
         "js" : ["scripts/jquery-1.11.0.min.js"]
     }],
     "background": {
         "scripts": [
             "scripts/jquery-1.11.0.min.js",
             "scripts/chromereload.js",
-            "scripts/background.js"
-        ]
+            "scripts/background.js",
+            "scripts/page_injection.js"
+        ],
+        "persistent" : false
     },
 	"commands": {
 		"spritzify_selection": {
@@ -30,10 +34,8 @@
 		"description": "Activate Spritz on the highlighted text."
 		}
 	},
-    "permissions": [
-      "contextMenus"
-    ],
   "browser_action": {
+    "default_title": "Do stuff",
     "default_icon": {
       "19": "images/icon-19.png",
       "38": "images/icon-38.png"
@@ -43,6 +45,7 @@
   "options_page": "options.html",
   "web_accessible_resources" : [
 			"scripts/login_success.js",
-			"login_success.html"
+			"login_success.html",
+            "scripts/page_injection.js"
 			]
 }

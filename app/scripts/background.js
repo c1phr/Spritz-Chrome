@@ -1,8 +1,8 @@
-'use strict';
+//'use strict';
 
 var spritzerController = null;
 
-$(document).ready(function() {
+$(document).ready(function(tab) {
     var myuri = chrome.extension.getURL("/login_success.html")
 
     var SpritzSettings = {
@@ -14,11 +14,6 @@ $(document).ready(function() {
         "redicleHeight" : 	76		// Specify Redicle height
     };
     //$("body").prepend('<div class="backdrop overlay">');
-
-    var code = [
-    'var stuff = document.createElement("div");',
-    'stuff.setAttribute("class", "backdrop");',
-    'document.body.appendChild(stuff);'].join("\n");
 
     //chrome.tabs.executeScript(null, { code: code });
 
@@ -44,6 +39,8 @@ $(document).ready(function() {
 	//$.getScript("https://sdk.spritzinc.com/js/1.0/css/spritz.min.css", function(){console.log("got the Spritz CSS")});
 });
 
+
+
 chrome.runtime.onInstalled.addListener(function (details) { //Listener for new installs and updates
     if (details.reason == "install") //This branch handles new installs
     {
@@ -56,14 +53,30 @@ chrome.runtime.onInstalled.addListener(function (details) { //Listener for new i
     }
 });
 
-
 chrome.browserAction.onClicked.addListener(function(tab) {
-    console.log("Extension button clicked");
-    chrome.tabs.create({url: '../firstRun.html'}, null);
+    // No tabs or host permissions needed!
+    console.log('Turning ' + tab.url + ' red!');
+    chrome.tabs.executeScript({
+        code: 'document.body.style.backgroundColor="red"'
+    });
 });
 
+/*chrome.browserAction.onClicked.addListener(function(tab) {
+    console.log("Extension button clicked");
+    //chrome.tabs.create({url: '../firstRun.html'}, null);
+    chrome.tabs.executeScript({
+        code: 'document.body.style.backgroundColor="red"'
+    });
+});*/
+
 chrome.commands.onCommand.addListener(function(command){
+    alert("Shortcut fired");
+    var pi = chrome.extension.getURL('page_inject.js');
+    inj();
+    chrome.tabs.executeScript(null, {file: pi});
+    chrome.tabs.executeScript(null,{code:"document.body.style.backgroundColor='red'"});
     chrome.tabs.executeScript({file: "page_inject.js"});
+    chrome.tabs.executeScript({code: 'alert("shots fired");'});
     var code = [
         'var stuff = document.createElement("div");',
         'stuff.setAttribute("class", "backdrop");',
