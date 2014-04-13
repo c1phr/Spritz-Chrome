@@ -55,7 +55,7 @@ chrome.runtime.onInstalled.addListener(function (details) { //Listener for new i
 
 chrome.browserAction.onClicked.addListener(function(tab) {
     console.log("Extension button clicked");
-    //chrome.tabs.create({url: '../firstRun.html'}, null);
+    chrome.tabs.create({url: '../firstRun.html'}, null);
     chrome.tabs.executeScript({
         code: 'document.body.style.backgroundColor="red"'
     });
