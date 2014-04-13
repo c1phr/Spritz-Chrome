@@ -20,7 +20,7 @@ chrome.commands.onCommand.addListener(function(command){
     chrome.tabs.executeScript(null, { code: "$('body').append('</div><div class=\"reader-wrapper\"><div data-role=\"spritzer\" id=\"spritzer\" style=\"z-index: 1000; height: 1000px; width: 1000px;\"></div></div>');"});
 
 	if (command == "spritzify_selection") {
-        alert(window.getSelection().toString());
+
         chrome.runtime.sendMessage({messgae: 'spritz'});
     }
 });
