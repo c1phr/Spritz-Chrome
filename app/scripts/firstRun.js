@@ -7,10 +7,8 @@
 function startSpritzing(text) {
     //initialize the controller from the API
     var spritzController = $("#spritzer").data("controller");
-<<<<<<< HEAD
-=======
+
     var container = $("#spritzer");
->>>>>>> d191637fbcd4f5c05abca76f5a07b5b799ffd5ac
     var locale = "en_us";
     var successHandler = function onSpritzifySuccess(text){
         //alert("spritzify success!" + text);
@@ -33,9 +31,7 @@ $(document).ready(function() {
 		var spritzText = "You've successfully installed Spritz for Chrome! You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!You've successfully installed Spritz for Chrome!";
 		startSpritzing(spritzText);
 	},1);
-<<<<<<< HEAD
 });
-=======
 });
 
 function createContextItem(){
@@ -50,5 +46,3 @@ function showProgress(completed) {
 }
 
 container.on("onProgressChange", function(event, completed) {showProgress(completed);});
-
->>>>>>> d191637fbcd4f5c05abca76f5a07b5b799ffd5ac
