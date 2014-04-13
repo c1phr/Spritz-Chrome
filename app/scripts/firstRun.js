@@ -32,13 +32,6 @@ $(document).ready(function() {
 		startSpritzing(spritzText);
 	},1);
 });
-});
-
-function createContextItem(){
-	var createProperties = {title:"Spritz", id:"1"};
-	chrome.contextMenus.create(object createProperties);
-	chrome.contextMenus.onClicked.addListener(function getSelectionText());
-}
 
 //Stuff for progress bar
 function showProgress(completed) {
