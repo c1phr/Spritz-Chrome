@@ -56,6 +56,21 @@ chrome.commands.onCommand.addListener(function(command){
     }
 });
 
+chrome.contextMenus.create({
+	"id": "SpritzMenu"
+	,"title": "Spritz it!"
+	,"contexts": [
+		"selection"
+	]
+});
+
+chrome.contextMenus.onClicked.addListener(function(data) {
+  if (data.menuItemId == 'SpritzMenu') {
+  	getSelectionText();
+  }
+});
+
+
 function startSpritzing(text) {
     var locale = "en_us";
     var successHandler = function(text){
