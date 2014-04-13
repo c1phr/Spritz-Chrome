@@ -62,7 +62,6 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 });
 
 chrome.commands.onCommand.addListener(function(command){
-    //chrome.tabs.executeScript(null, { code: "$('body').prepend('<div class='backdrop overlay'>');"});
     chrome.tabs.executeScript(null, { code: "$('body').prepend('<div class=\"backdrop overlay\">');"});
     chrome.tabs.executeScript(null, { code: "$('body').append('</div><div class=\"reader-wrapper\"><div data-role=\"spritzer\" id=\"spritzer\"></div></div>');"});
 
@@ -120,12 +119,6 @@ function getSelectionText() {
 
 function displayRedicle() {
     console.log("Redicle Display Called");
-    //$("document.body").prepend("<div class='backdrop overlay'>");
-    //var bigDiv = document.createElement("div");
-    //bigDiv.src = "<div class='backdrop overlay'>";
-    //document.body.insertBefore(bigDiv, document.body.firstChild)
-    //$("document.body").append("</div><div class='reader-wrapper'><div data-role='spritzer' id='spritzer'></div></div>");
-    //console.log($("body").html);
     spritzerController.attach($('#spritzer'));
     getSelectionText();
 }
