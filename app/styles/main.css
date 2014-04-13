@@ -17,12 +17,6 @@ body {
   z-index: 999998;
 }
 
-.canvas-container{
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-top: 0px;
-}
-
 .reader-wrapper{
   z-index: 999999;
   position: fixed;

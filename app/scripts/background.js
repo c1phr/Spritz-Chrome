@@ -1,20 +1,27 @@
 'use strict';
+
+
 $(document).ready(function() {
     var myuri = chrome.extension.getURL("/login_success.html")
-    var spritzerController = null;
     var SpritzSettings = {
         clientId: "4739145546ba944ad",
         redirectUri: myuri
     };
-    $.getScript("https://sdk.spritzinc.com/js/1.0/js/spritz.min.js", function (data, textStatus, jqxhr) {
-        console.log(data);
-        console.log(status);
-        console.log(jqxhr.status);
+    $.getScript("https://sdk.spritzinc.com/js/1.0/js/spritz.min.js", function () {
+        console.log("DocumentReady got SDK file");
         window.SpritzClient = new SPRITZ.client.SpritzClient(SpritzSettings.clientId, 'https://api.spritzinc.com/api-server/v1/', myuri);
-        spritzerController = new SPRITZ.spritzinc.SpritzerController();
-        spritzerController.spritzClient = SpritzClient;
-        spritzerController.attach($('#spritzer'));
-    })
+
+		window.spritz_sdk_root = "https://sdk.spritzinc.com/js/1.0";
+		//var head  = document.getElementsByTagName('head')[0];
+	    //var link  = document.createElement('link');
+	    //link.id   = 'spritz-css';
+	    //link.rel  = 'stylesheet';
+	    //link.type = 'text/css';
+	    window.link.href = window.spritz_sdk_root + '/css/spritz.min.css';
+	    //link.media = 'all';
+	    window.head.appendChild(window.link);
+    });
+	//$.getScript("https://sdk.spritzinc.com/js/1.0/css/spritz.min.css", function(){console.log("got the Spritz CSS")});
 });
 
 chrome.runtime.onInstalled.addListener(function (details) { //Listener for new installs and updates
@@ -31,7 +38,7 @@ chrome.runtime.onInstalled.addListener(function (details) { //Listener for new i
 
 
 chrome.browserAction.onClicked.addListener(function(tab) {
-    //alert("Extension button clicked");
+    console.log("Extension button clicked");
     chrome.tabs.create({url: '../firstRun.html'}, null);
 });
 
@@ -49,21 +56,29 @@ chrome.commands.onCommand.addListener(function(command){
     }
 });
 
+chrome.contextMenus.create({
+	"id": "SpritzMenu"
+	,"title": "Spritz it!"
+	,"contexts": [
+		"selection"
+	]
+});
+
+chrome.contextMenus.onClicked.addListener(function(data) {
+  if (data.menuItemId == 'SpritzMenu') {
+  	getSelectionText();
+  }
+});
+
+
 function startSpritzing(text) {
     var locale = "en_us";
     var successHandler = function(text){
-        try {
-            //spritzController.setSpritzText(text);
-            $('#spritzer').data('controller').startSpritzing(text);
-        }
-        catch (e)
-        {
-            console.log("ERR: " + e);
-        }
-        console.log("Spritz fetched the text!" + text.toString());
+        //spritzController.setSpritzText(text);
+        console.log("Spritz fetched the text!");
     };
     var failureHandler = function(text){
-        alert("Spritz failed to fetch the text...")
+        console.log("Spritz failed to fetch the text...")
     };
     SpritzClient.spritzify(text, locale, successHandler, failureHandler);
 
@@ -81,7 +96,7 @@ function getSelectionText() {
 
 function displayRedicle() {
     console.log("Redicle Display Called");
-    $("html").prepend("<div class='backdrop overlay'>");
-    $("html").append("</div><div class='reader-wrapper'><div id='spritzer'></div></div>");
     getSelectionText();
+    $("html").prepend("<div class='backdrop overlay'>");
+    $("html").append("</div><div class='reader-wrapper'><div data-role='spritzer' id='spritzer'></div></div>");
 }
