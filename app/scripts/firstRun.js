@@ -6,6 +6,7 @@
 
 function startSpritzing(text) {
     //initialize the controller from the API
+    wait(1000);
     var spritzController = $("#spritzer").data("controller");
 
     var container = $("#spritzer");
@@ -15,6 +16,7 @@ function startSpritzing(text) {
         spritzController.setSpritzText(text);
         console.log("Spritz fetched the text!");
     };
+
     SpritzClient.spritzify(text, locale, successHandler, onSpritzifyFailure);
     container.on("onProgressChange", function(event, completed) {showProgress(completed);});
 

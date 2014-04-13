@@ -14,13 +14,15 @@
     "content_security_policy": "script-src 'self' https://sdk.spritzinc.com/; object-src 'self'",
     "content_scripts" : [{
         "matches" : ["*://*/*"],
-        "js" : ["scripts/jquery-1.11.0.min.js"]
+        "js" : ["scripts/jquery-1.11.0.min.js", "scripts/spritzify.js"],
+        "all_frames" : true
     }],
     "background": {
         "scripts": [
             "scripts/jquery-1.11.0.min.js",
             "scripts/chromereload.js",
-            "scripts/background.js"
+            "scripts/background.js",
+            "scripts/spritzify.js"
 
         ],
         "persistent" : false
@@ -46,6 +48,8 @@
   "web_accessible_resources" : [
 			"scripts/login_success.js",
 			"login_success.html",
-            "scripts/page_injection.js"
+            "scripts/page_injection.js",
+            "scripts/jquery-1.11.0.min.js",
+            "scripts/spritzify.js"
 			]
 }
