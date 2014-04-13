@@ -1,4 +1,6 @@
 'use strict';
+
+
 $(document).ready(function() {
     var myuri = chrome.extension.getURL("/login_success.html")
     var SpritzSettings = {
@@ -6,9 +8,20 @@ $(document).ready(function() {
         redirectUri: myuri
     };
     $.getScript("https://sdk.spritzinc.com/js/1.0/js/spritz.min.js", function () {
-        alert("DocumentReady got SDK file");
+        console.log("DocumentReady got SDK file");
         window.SpritzClient = new SPRITZ.client.SpritzClient(SpritzSettings.clientId, 'https://api.spritzinc.com/api-server/v1/', myuri);
-    })
+
+		window.spritz_sdk_root = "https://sdk.spritzinc.com/js/1.0";
+		//var head  = document.getElementsByTagName('head')[0];
+	    //var link  = document.createElement('link');
+	    //link.id   = 'spritz-css';
+	    //link.rel  = 'stylesheet';
+	    //link.type = 'text/css';
+	    window.link.href = window.spritz_sdk_root + '/css/spritz.min.css';
+	    //link.media = 'all';
+	    window.head.appendChild(window.link);
+    });
+	//$.getScript("https://sdk.spritzinc.com/js/1.0/css/spritz.min.css", function(){console.log("got the Spritz CSS")});
 });
 
 chrome.runtime.onInstalled.addListener(function (details) { //Listener for new installs and updates
@@ -25,7 +38,7 @@ chrome.runtime.onInstalled.addListener(function (details) { //Listener for new i
 
 
 chrome.browserAction.onClicked.addListener(function(tab) {
-    //alert("Extension button clicked");
+    console.log("Extension button clicked");
     chrome.tabs.create({url: '../firstRun.html'}, null);
 });
 
@@ -47,10 +60,10 @@ function startSpritzing(text) {
     var locale = "en_us";
     var successHandler = function(text){
         //spritzController.setSpritzText(text);
-        alert("Spritz fetched the text!");
+        console.log("Spritz fetched the text!");
     };
     var failureHandler = function(text){
-        alert("Spritz failed to fetch the text...")
+        console.log("Spritz failed to fetch the text...")
     };
     SpritzClient.spritzify(text, locale, successHandler, failureHandler);
 
@@ -67,7 +80,7 @@ function getSelectionText() {
 }
 
 function displayRedicle() {
-    alert("Redicle Display Called");
+    console.log("Redicle Display Called");
     getSelectionText();
     $("html").prepend("<div class='backdrop overlay'>");
     $("html").append("</div><div class='reader-wrapper'><div data-role='spritzer' id='spritzer'></div></div>");
