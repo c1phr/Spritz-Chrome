@@ -13,6 +13,17 @@ $(document).ready(function() {
         "redicleWidth" : 	434,	// Specify Redicle width
         "redicleHeight" : 	76		// Specify Redicle height
     };
+    //$("body").prepend('<div class="backdrop overlay">');
+
+    var code = [
+    'var stuff = document.createElement("div");',
+    'stuff.setAttribute("class", "backdrop");',
+    'document.body.appendChild(stuff);'].join("\n");
+
+    //chrome.tabs.executeScript(null, { code: code });
+
+    //document.body.appendChild(stuff);
+
     $.getScript("https://sdk.spritzinc.com/js/1.0/js/spritz.min.js", function () {
         console.log("DocumentReady got SDK file");
         window.SpritzClient = new SPRITZ.client.SpritzClient(SpritzSettings.clientId, 'https://api.spritzinc.com/api-server/v1/', myuri);
@@ -52,6 +63,12 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 });
 
 chrome.commands.onCommand.addListener(function(command){
+    chrome.tabs.executeScript({file: "page_inject.js"});
+    var code = [
+        'var stuff = document.createElement("div");',
+        'stuff.setAttribute("class", "backdrop");',
+        'document.body.appendChild(stuff);',
+        'alert("other injection");'];
 	if (command == "spritzify_selection") {
         console.log(window.getSelection().toString());
 
@@ -81,6 +98,7 @@ chrome.contextMenus.onClicked.addListener(function(data) {
 
 
 function startSpritzing(text) {
+
     var locale = "en_us";
     var successHandler = function(text){
         spritzerController.startSpritzing(text);
@@ -105,9 +123,12 @@ function getSelectionText() {
 
 function displayRedicle() {
     console.log("Redicle Display Called");
-    $("body").prepend("<div class='backdrop overlay'>");
-    $("body").append("</div><div class='reader-wrapper'><div data-role='spritzer' id='spritzer'></div></div>");
-    console.log($("body").html);
+    //$("document.body").prepend("<div class='backdrop overlay'>");
+    //var bigDiv = document.createElement("div");
+    //bigDiv.src = "<div class='backdrop overlay'>";
+    //document.body.insertBefore(bigDiv, document.body.firstChild)
+    //$("document.body").append("</div><div class='reader-wrapper'><div data-role='spritzer' id='spritzer'></div></div>");
+    //console.log($("body").html);
     spritzerController.attach($('#spritzer'));
     getSelectionText();
 }
