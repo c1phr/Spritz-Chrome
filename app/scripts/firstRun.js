@@ -6,8 +6,12 @@
 
 function startSpritzing(text) {
     //initialize the controller from the API
+<<<<<<< HEAD
     var spritzController = $("#spritzer").data("controller");
     var container = $("#spritzer");
+=======
+
+>>>>>>> bf74c6af57e1120848f0892bced5bd90a113ab19
     var locale = "en_us";
     var successHandler = function onSpritzifySuccess(text){
         //alert("spritzify success!" + text);
@@ -38,4 +42,8 @@ function showProgress(completed) {
 }
 
 
+<<<<<<< HEAD
 //init
+=======
+container.on("onProgressChange", function(event, completed) {showProgress(completed);});
+>>>>>>> bf74c6af57e1120848f0892bced5bd90a113ab19
