@@ -110,14 +110,15 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             var container = $("#spritzer");
             var locale = "en_us";
             var successHandler = function onSpritzifySuccess(text){
-                //alert("spritzify success!" + text);
-                console.log("About to set text");
+                alert("spritzify success!" + text);
+
                 spritzController.setSpritzText(text);
                 console.log("Spritz fetched the text!");
             };
-            var onSpritizfyFailure = function() {
-                console.log("Fail");
+            var onSpritzifyFailure = function onSpritizfyFailure() {
+                alert("Fail");
             }
+
             SpritzClient.spritzify(text, locale, successHandler, onSpritzifyFailure);
         }
 

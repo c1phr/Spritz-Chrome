@@ -21,8 +21,6 @@ chrome.commands.onCommand.addListener(function(command){
 
 	if (command == "spritzify_selection") {
         alert(window.getSelection().toString());
-
-        console.log("Command: " + command.name);
         chrome.runtime.sendMessage({messgae: 'spritz'});
     }
 });

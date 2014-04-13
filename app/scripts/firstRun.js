@@ -6,7 +6,6 @@
 
 function startSpritzing(text) {
     //initialize the controller from the API
-    wait(1000);
     var spritzController = $("#spritzer").data("controller");
 
     var container = $("#spritzer");
