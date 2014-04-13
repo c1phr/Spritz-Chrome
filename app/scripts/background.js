@@ -54,34 +54,18 @@ chrome.runtime.onInstalled.addListener(function (details) { //Listener for new i
 });
 
 chrome.browserAction.onClicked.addListener(function(tab) {
-    // No tabs or host permissions needed!
-    console.log('Turning ' + tab.url + ' red!');
-    chrome.tabs.executeScript({
-        code: 'document.body.style.backgroundColor="red"'
-    });
-});
-
-/*chrome.browserAction.onClicked.addListener(function(tab) {
     console.log("Extension button clicked");
     //chrome.tabs.create({url: '../firstRun.html'}, null);
     chrome.tabs.executeScript({
         code: 'document.body.style.backgroundColor="red"'
     });
-});*/
+});
 
 chrome.commands.onCommand.addListener(function(command){
-    alert("Shortcut fired");
-    var pi = chrome.extension.getURL('page_inject.js');
-    inj();
-    chrome.tabs.executeScript(null, {file: pi});
-    chrome.tabs.executeScript(null,{code:"document.body.style.backgroundColor='red'"});
-    chrome.tabs.executeScript({file: "page_inject.js"});
-    chrome.tabs.executeScript({code: 'alert("shots fired");'});
-    var code = [
-        'var stuff = document.createElement("div");',
-        'stuff.setAttribute("class", "backdrop");',
-        'document.body.appendChild(stuff);',
-        'alert("other injection");'];
+    chrome.tabs.executeScript(null, { code: "$('body').prepend('batchelder');"});
+    //chrome.tabs.executeScript(null, { code: "$('body').prepend('<div class='backdrop overlay'>');"});
+    //chrome.tabs.executeScript(null, { code: "$('body').append('</div><div class='reader-wrapper'><div data-role='spritzer' id='spritzer'></div></div>');"});
+
 	if (command == "spritzify_selection") {
         console.log(window.getSelection().toString());
 

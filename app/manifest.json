@@ -20,8 +20,8 @@
         "scripts": [
             "scripts/jquery-1.11.0.min.js",
             "scripts/chromereload.js",
-            "scripts/background.js",
-            "scripts/page_injection.js"
+            "scripts/background.js"
+
         ],
         "persistent" : false
     },
